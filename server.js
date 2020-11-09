@@ -5,12 +5,12 @@ const exphbs = require('express-handlebars');
 require('dotenv').config
 
 const app = express();
-const PORT = process.env.PORT || 3307;
+const PORT = process.env.PORT || 3001;
 
 const sequelize = require("./config/connection");
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-const sess = {
+app.use(session({
     secret: 'Super secret secret',
     cookie: { maxAge: 8000000 },
     resave: false,
@@ -18,9 +18,9 @@ const sess = {
     store: new SequelizeStore({
         db: sequelize
     })
-};
+}));
 
-app.use(session(sess));
+// app.use(session(sess));
 
 const helpers = require('./utils/helpers');
 
