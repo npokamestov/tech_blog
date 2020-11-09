@@ -11,28 +11,23 @@
 <body>
     <div class="wrapper">
 
-        <header>
-            <h1>
-                <a href="/">The Tech Blog</a>
-            </h1>
+        <header class="hero">
             <nav>
                 {{#if loggedIn}}
-                <a href="/dashboard">Dashboard</a>
-                <button id="logout" class="btn-no-style">Logout</button>
+                <button class="btn nav-button pointer" onclick="window.location.href='/dashboard'">Dashboard</button>
+                <button class="btn nav-button pointer" id="logout" class="btn-no-style" onclick="window.location.href='/'">Logout</button>
                 {{else}}
-                <a href="/login">Login</a>
+                <button class="btn nav-button pointer" onclick="window.location.href='/login'">Login</button>
                 {{/if}}
             </nav>
+            <h1 class="app-title">
+                <a href="/">The Tech Blog</a>
+            </h1>
         </header>
 
-        <main>
+        <main class="flex-row justify-space-between">
         {{{ body }}}
         </main>
-
-        <footer>
-        Thanks for visiting!
-        </footer>
-        
     </div>
     
     {{#if loggedIn}}
